@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle do Avião</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Painel de Controle do Avião</h1>
+        <div class="gauges">
+            <div class="gauge">
+                <label>Velocidade (km/h)</label>
+                <input type="range" id="speed" min="0" max="900" value="0" title="Velocidade">
+                <span id="speedValue">0</span> km/h
+            </div>
+            <div class="gauge">
+                <label>Altitude (m)</label>
+                <input type="range" id="altitude" min="0" max="12000" value="0" title="Altitude">
+                <span id="altitudeValue">0</span> m
+            </div>
+            <div class="gauge">
+                <label>Combustível (%)</label>
+                <input type="range" id="fuel" min="0" max="100" value="100" title="Combustível">
+                <span id="fuelValue">100</span> %
+            </div>
+            <div class="gauge">
+                <label>Direção (°)</label>
+                <input type="range" id="direction" min="0" max="360" value="0" title="Direção">
+                <span id="directionValue">0</span> °
+            </div>
+            <div class="gauge">
+                <label>Flaps</label>
+                <input type="checkbox" id="flaps" title="Flaps">
+                <span id="flapsStatus">Desativado</span>
+            </div>
+            <div class="gauge">
+                <label>Trem de Pouso</label>
+                <input type="checkbox" id="landingGear" title="Trem de Pouso">
+                <span id="landingGearStatus">Desativado</span>
+            </div>
+        </div>
+        <div class="country-selection">
+            <label for="origin">País de Origem:</label>
+            <select id="origin">
+                <option value="Brasil">Brasil</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                <option value="França">França</option>
+                <option value="Japão">Japão</option>
+                <option value="China">China</option>
+                <option value="Alemanha">Alemanha</option>
+                <option value="Itália">Itália</option>
+                <option value="Espanha">Espanha</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Argentina">Argentina</option>
+            </select>
+            <label for="destination">País de Destino:</label>
+            <select id="destination">
+                <option value="Brasil">Brasil</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                <option value="França">França</option>
+                <option value="Japão">Japão</option>
+                <option value="China">China</option>
+                <option value="Alemanha">Alemanha</option>
+                <option value="Itália">Itália</option>
+                <option value="Espanha">Espanha</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Argentina">Argentina</option>
+            </select>
+            <button id="calculate">Calcular Distância e Tempo</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
