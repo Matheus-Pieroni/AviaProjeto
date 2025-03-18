@@ -13,14 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const landingGearStatus = document.getElementById('landingGearStatus');
     const calculateButton = document.getElementById('calculate');
     const resultDiv = document.getElementById('result');
+    const aviaoElemento = document.querySelector('.aviao');
 
     // Atualiza os valores dos medidores
     speedInput.addEventListener('input', () => {
         speedValue.textContent = speedInput.value;
+        if (speedInput.value < 150) {
+            altitudeValue.textContent = 0;
+            altitudeInput.value = 0;
+        }
+        gazolina();
     });
 
     altitudeInput.addEventListener('input', () => {
         altitudeValue.textContent = altitudeInput.value;
+        if (speedInput.value < 150) {
+            alert('Ei! O avião não pode subir a não ser que esteja a mais de 150Km/h!!!')
+            altitudeValue.textContent = 0;
+            altitudeInput.value = 0;
+        }
     });
 
     fuelInput.addEventListener('input', () => {
@@ -29,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     directionInput.addEventListener('input', () => {
         directionValue.textContent = directionInput.value;
+        aviaoElemento.style.transform = `rotate(${directionInput.value}deg)`;
     });
 
     flapsInput.addEventListener('change', () => {
@@ -144,5 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             alert("Localização inválida.");
         }
+    }
+
+    function gazolina() {
+        if (speedInput.value > 10) {
+            fuelInput.value -= 1;
+            fuelValue.textContent = fuelInput.value;
+        }
+    requestAnimationFrame(gazolina);
     }
 });
